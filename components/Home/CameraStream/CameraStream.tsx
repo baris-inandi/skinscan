@@ -2,7 +2,7 @@ import React from "react";
 import { CameraPreview } from "@awesome-cordova-plugins/camera-preview";
 
 const CameraStream: React.FC = () => {
-  let options = {
+  /*   let options = {
     x: 0,
     y: 0,
     width: window.screen.width,
@@ -17,8 +17,8 @@ const CameraStream: React.FC = () => {
   };
 
   CameraPreview.startCamera(options);
-  CameraPreview.show();
-  return <div className="w-screen h-screen"></div>;
+  CameraPreview.show(); */
+  return <div className="w-screen h-screen bg-blue-400"></div>;
 };
 
 export default CameraStream;
