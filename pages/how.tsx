@@ -1,5 +1,5 @@
 import React from "react";
-import Component from "./How/How";
+import Component from "../components/How/How";
 
 const How: React.FC = () => {
   return <Component />;
