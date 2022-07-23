@@ -9,6 +9,7 @@ const InitialOverlay: React.FC = () => {
     <div
       style={{
         background: "rgba(0,0,0,.7)",
+        zIndex: "99999999999",
       }}
       className="h-screen w-screen fixed top-0 left-0 text-sk-bg font-sk"
     >
