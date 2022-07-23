@@ -5,32 +5,16 @@ const FirstTime: React.FC = () => {
   return (
     <div className="h-screen w-screen">
       <Greeter
-        key={1}
-        layer={1}
-        title="hi"
-        content="ho"
-        btnContent="continue"
+        order={1}
+        title="Welcome To skinscan"
+        content="We use AI technology to identify dermatological disorders and diseases and provide insight about them."
+        btnContent="Next"
       />
       <Greeter
-        key={2}
-        layer={2}
-        title="hi"
-        content="ho"
-        btnContent="continue"
-      />
-      <Greeter
-        key={3}
-        layer={3}
-        title="hi"
-        content="ho"
-        btnContent="continue"
-      />
-      <Greeter
-        key={4}
-        layer={4}
-        title="hi"
-        content="ho"
-        btnContent="continue"
+        order={2}
+        title="Upload your photo"
+        content="Upload a photo of a sample and let us identify the disease and provide info."
+        btnContent="Next"
       />
     </div>
   );

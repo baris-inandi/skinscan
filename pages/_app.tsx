@@ -27,7 +27,9 @@ function App({ Component, pageProps }) {
           content="width=device-width, initial-scale=1.0, viewport-fit=cover"
         ></meta>
       </Head>
-      {isFirstTimeUsing ? <FirstTime /> : <Component {...pageProps} />}
+      <main className="bg-sk-bg text-sk-fg leading-snug">
+        {isFirstTimeUsing ? <FirstTime /> : <Component {...pageProps} />}
+      </main>
       <Script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></Script>
     </>
   );
