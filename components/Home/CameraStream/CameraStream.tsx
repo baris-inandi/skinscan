@@ -8,7 +8,7 @@ const CameraStream: React.FC = () => {
     width: window.screen.width,
     height: window.screen.height,
     camera: CameraPreview.CAMERA_DIRECTION.BACK,
-    toBack: false,
+    toBack: true,
     tapPhoto: true,
     tapFocus: false,
     previewDrag: false,
