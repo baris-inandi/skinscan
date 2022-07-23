@@ -1,0 +1,7 @@
+{
+  "name": "skinscan",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
