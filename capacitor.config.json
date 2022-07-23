@@ -1,13 +1,8 @@
 {
-  "appId": "com.example.app",
-  "appName": "nextjs-tailwind-capacitor",
+  "appId": "com.skinscan.app",
+  "appName": "skinscan",
   "bundledWebRuntime": false,
-  "npmClient": "npm",
+  "npmClient": "pnpm",
   "webDir": "out",
-  "plugins": {
-    "SplashScreen": {
-      "launchShowDuration": 0
-    }
-  },
   "cordova": {}
 }

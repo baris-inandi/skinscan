@@ -2,6 +2,8 @@ import Head from "next/head";
 import Script from "next/script";
 import React from "react";
 
+import FirstTime from "../components/FirstTime/FirstTime";
+
 import "tailwindcss/tailwind.css";
 import "@ionic/react/css/core.css";
 import "@ionic/react/css/padding.css";
@@ -14,6 +16,8 @@ import "@ionic/react/css/display.css";
 import "../styles/global.css";
 import "../styles/variables.css";
 
+const isFirstTimeUsing = true;
+
 function App({ Component, pageProps }) {
   return (
     <>
@@ -23,7 +27,7 @@ function App({ Component, pageProps }) {
           content="width=device-width, initial-scale=1.0, viewport-fit=cover"
         ></meta>
       </Head>
-      <Component {...pageProps} />
+      {isFirstTimeUsing ? <FirstTime /> : <Component {...pageProps} />}
       <Script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></Script>
     </>
   );
