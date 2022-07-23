@@ -21,8 +21,10 @@ const Greeter: React.FC<Props> = (props) => {
       }}
     >
       <div className="flex flex-col w-full h-full items-center justify-center">
-        <h1 className="px-2 font-bold text-3xl pb-7">{props.title}</h1>
-        <p className="text-sm">{props.content}</p>
+        <h1 className="px-2 font-medium text-4xl pb-7">
+          {props.title}
+        </h1>
+        <p>{props.content}</p>
       </div>
       <div className="fixed bottom-0 left-0 w-screen h-fit-contents flex items-center justify-center">
         <div className="w-full py-8 px-7">
