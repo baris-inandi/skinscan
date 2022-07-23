@@ -3,8 +3,8 @@ import { CameraPreview } from "@awesome-cordova-plugins/camera-preview";
 
 const CameraStream: React.FC = () => {
   let options = {
-    x: 400,
-    y: 400,
+    x: 100,
+    y: 100,
     width: window.screen.width,
     height: window.screen.height,
     camera: CameraPreview.CAMERA_DIRECTION.BACK,
