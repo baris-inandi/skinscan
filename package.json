@@ -9,7 +9,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "export": "next export"
+    "export": "next export",
+    "ios": "next build && next export && npx cap sync && npx cap run ios"
   },
   "dependencies": {
     "@awesome-cordova-plugins/camera-preview": "^5.44.0",
