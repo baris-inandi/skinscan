@@ -1,7 +1,8 @@
 import React from "react";
+import Home from "./Home/Home";
 
 const Index: React.FC = () => {
-  return <div className="text-red-400">hello</div>;
+  return <Home />;
 };
 
 export default Index;
