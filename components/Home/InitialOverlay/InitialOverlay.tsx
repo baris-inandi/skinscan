@@ -14,7 +14,7 @@ const InitialOverlay: React.FC = () => {
     >
       <div className="h-0">
         <div className="w-full text-center font-sk safe-area-top">
-          <div className="pt-3 text-sm">skinscan</div>
+          <div className="pt-2 text-base">skinscan</div>
         </div>
       </div>
       <div className="text-center flex flex-col items-center justify-center h-full w-full">

@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@awesome-cordova-plugins/camera-preview': ^5.44.0
   '@capacitor/android': ^3.0.1
   '@capacitor/cli': ^3.0.1
   '@capacitor/core': ^3.0.1
@@ -11,6 +12,7 @@ specifiers:
   '@types/react': ^18.0.15
   autoprefixer: ^10.2.6
   classnames: ^2.2.6
+  cordova-plugin-camera-preview: ^0.12.3
   eslint: ^7.28.0
   eslint-config-next: ^11.0.0
   ionicons: ^5.2.3
@@ -28,6 +30,7 @@ specifiers:
   typescript: ^4.7.4
 
 dependencies:
+  '@awesome-cordova-plugins/camera-preview': 5.44.0_zuvf63os36jyc5em5biagvpyka
   '@capacitor/android': 3.6.0_@capacitor+core@3.6.0
   '@capacitor/cli': 3.6.0
   '@capacitor/core': 3.6.0
@@ -37,6 +40,7 @@ dependencies:
   '@ionic/react-router': 6.1.15_jsysfhissp7fmoob3bakvndu5q
   autoprefixer: 10.4.7_postcss@8.4.14
   classnames: 2.3.1
+  cordova-plugin-camera-preview: 0.12.3
   next: 12.2.3_biqbaboplfbrettd7655fr4n2y
   postcss: 8.4.14
   react: 18.2.0
@@ -57,6 +61,26 @@ devDependencies:
   typescript: 4.7.4
 
 packages:
+
+  /@awesome-cordova-plugins/camera-preview/5.44.0_zuvf63os36jyc5em5biagvpyka:
+    resolution: {integrity: sha512-JJ0vsUrq1qrcUq5A1ta8AQJteu/XpCMxBd9P/tHEzWCmo3/1OhaoS4LdnPGwmsYDaTYqBQpOYZFA/Mvz7PReNg==}
+    peerDependencies:
+      '@awesome-cordova-plugins/core': ^5.1.0
+      rxjs: ^5.5.0 || ^6.5.0 || ^7.3.0
+    dependencies:
+      '@awesome-cordova-plugins/core': 5.44.0_rxjs@7.5.6
+      '@types/cordova': 0.0.34
+      rxjs: 7.5.6
+    dev: false
+
+  /@awesome-cordova-plugins/core/5.44.0_rxjs@7.5.6:
+    resolution: {integrity: sha512-LFa0RQyKoiMoh8GiFTOUh+SHdxs6XiozCAzOqq0YUrAAGb/sQRwZ+pDtqw0RTSQqN7DV3FH8ayeuHX8LEm3bNA==}
+    peerDependencies:
+      rxjs: ^5.5.0 || ^6.5.0 || ^7.3.0
+    dependencies:
+      '@types/cordova': 0.0.34
+      rxjs: 7.5.6
+    dev: false
 
   /@babel/code-frame/7.12.11:
     resolution: {integrity: sha512-Zt1yodBx1UcyiePMSkWnU4hPqhwq7hGi2nFL1LeA3EUl+q2LQx16MISgJ0+z7dnmgvP9QtIleuETGOiOH1RcIw==}
@@ -478,6 +502,10 @@ packages:
     resolution: {integrity: sha512-6JrF+fdUK2zbGpJIlN7G3v966PQjyx/dPt1T9km2wj+EUBqgrxCk3uX4Kct16MIm9gGxfKRcfax2hVf5jvlTzA==}
     dependencies:
       tslib: 2.4.0
+
+  /@types/cordova/0.0.34:
+    resolution: {integrity: sha512-rkiiTuf/z2wTd4RxFOb+clE7PF4AEJU0hsczbUdkHHBtkUmpWQpEddynNfJYKYtZFJKbq4F+brfekt1kx85IZA==}
+    dev: false
 
   /@types/fs-extra/8.1.2:
     resolution: {integrity: sha512-SvSrYXfWSc7R4eqnOzbQF4TZmfpNSM9FrSWLU3EUnWBuyZqNBOrv1B1JA3byUDPUl9z4Ab3jeZG2eDdySlgNMg==}
@@ -916,6 +944,10 @@ packages:
 
   /concat-map/0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
+
+  /cordova-plugin-camera-preview/0.12.3:
+    resolution: {integrity: sha512-AThly6r2/jR7NfxQuEutLVSHQj6tGPbqQYxnaON3PnkWlhYqDCceKh0bVtZMoZ1ZMPHQdqFjSvzlKv9iT8EBXA==}
+    dev: false
 
   /core-js-pure/3.23.5:
     resolution: {integrity: sha512-8t78LdpKSuCq4pJYCYk8hl7XEkAX+BP16yRIwL3AanTksxuEf7CM83vRyctmiEL8NDZ3jpUcv56fk9/zG3aIuw==}
@@ -2651,6 +2683,12 @@ packages:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
     dependencies:
       queue-microtask: 1.2.3
+
+  /rxjs/7.5.6:
+    resolution: {integrity: sha512-dnyv2/YsXhnm461G+R/Pe5bWP41Nm6LBXEYWI6eiFP4fiwx6WRI/CD0zbdVAudd9xwLEF2IDcKXLHit0FYjUzw==}
+    dependencies:
+      tslib: 2.4.0
+    dev: false
 
   /safe-buffer/5.2.1:
     resolution: {integrity: sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==}

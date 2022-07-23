@@ -12,6 +12,7 @@
     "export": "next export"
   },
   "dependencies": {
+    "@awesome-cordova-plugins/camera-preview": "^5.44.0",
     "@capacitor/android": "^3.0.1",
     "@capacitor/cli": "^3.0.1",
     "@capacitor/core": "^3.0.1",
@@ -21,6 +22,7 @@
     "@ionic/react-router": "^6.1.12",
     "autoprefixer": "^10.2.6",
     "classnames": "^2.2.6",
+    "cordova-plugin-camera-preview": "^0.12.3",
     "next": "^12.2.0",
     "postcss": "^8.3.5",
     "react": "^18.2.0",
