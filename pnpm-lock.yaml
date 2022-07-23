@@ -3,10 +3,12 @@ lockfileVersion: 5.4
 specifiers:
   '@awesome-cordova-plugins/camera-preview': ^5.44.0
   '@capacitor/android': ^3.0.1
+  '@capacitor/camera': ^1.3.1
   '@capacitor/cli': ^3.0.1
   '@capacitor/core': ^3.0.1
   '@capacitor/ios': ^3.0.1
   '@capacitor/status-bar': ^1.0.1
+  '@capacitor/storage': ^1.2.5
   '@ionic/react': ^6.1.12
   '@ionic/react-router': ^6.1.12
   '@types/react': ^18.0.15
@@ -32,10 +34,12 @@ specifiers:
 dependencies:
   '@awesome-cordova-plugins/camera-preview': 5.44.0_zuvf63os36jyc5em5biagvpyka
   '@capacitor/android': 3.6.0_@capacitor+core@3.6.0
+  '@capacitor/camera': 1.3.1_@capacitor+core@3.6.0
   '@capacitor/cli': 3.6.0
   '@capacitor/core': 3.6.0
   '@capacitor/ios': 3.6.0_@capacitor+core@3.6.0
   '@capacitor/status-bar': 1.0.8_@capacitor+core@3.6.0
+  '@capacitor/storage': 1.2.5_@capacitor+core@3.6.0
   '@ionic/react': 6.1.15_biqbaboplfbrettd7655fr4n2y
   '@ionic/react-router': 6.1.15_jsysfhissp7fmoob3bakvndu5q
   autoprefixer: 10.4.7_postcss@8.4.14
@@ -129,6 +133,14 @@ packages:
       '@capacitor/core': 3.6.0
     dev: false
 
+  /@capacitor/camera/1.3.1_@capacitor+core@3.6.0:
+    resolution: {integrity: sha512-P0Isb1RKUGUpvmLTxsfVOge6bte7hGzp/zObQAQJ96wh9IAGv8S87g7qPm6SLPhg9HK+E8JY3eUmN6KbIRGJNg==}
+    peerDependencies:
+      '@capacitor/core': ^3.0.0
+    dependencies:
+      '@capacitor/core': 3.6.0
+    dev: false
+
   /@capacitor/cli/3.6.0:
     resolution: {integrity: sha512-YNQNM1wvy3zJkKNWcNL5KzIqgV5J1YzO27MHSxZyVA6+XmWCZi8Qz/Cq/uDrepsuBG67QdIvtOeL+JnXARedfw==}
     engines: {node: '>=12.4.0'}
@@ -170,6 +182,14 @@ packages:
 
   /@capacitor/status-bar/1.0.8_@capacitor+core@3.6.0:
     resolution: {integrity: sha512-lhxa70K6vg0QjdddbT9RqFLfQ9a0Fk1OVE54MhUH30DWymv4h2LrC+mJgH6JS46WQbR2UCHRymfmVCq1PS2Qiw==}
+    peerDependencies:
+      '@capacitor/core': ^3.0.0
+    dependencies:
+      '@capacitor/core': 3.6.0
+    dev: false
+
+  /@capacitor/storage/1.2.5_@capacitor+core@3.6.0:
+    resolution: {integrity: sha512-pWhnw4U7wN/zFV4lA4BLMypSufTktCbk548Yk4whSb0KAq3R0mLfSubRIHkGdcPqQWCsM6g/zUuszurhz6ncWQ==}
     peerDependencies:
       '@capacitor/core': ^3.0.0
     dependencies:

@@ -1,12 +1,10 @@
 import React from "react";
-import InitialOverlay from "./InitialOverlay/InitialOverlay";
-import CameraStream from "./CameraStream/CameraStream";
+import Hero from "./Hero/Hero";
 
 const Home: React.FC = () => {
   return (
     <div>
-      <CameraStream />
-      <InitialOverlay />;
+      <Hero />;
     </div>
   );
 };

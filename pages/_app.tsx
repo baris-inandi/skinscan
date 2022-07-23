@@ -28,7 +28,14 @@ function App({ Component, pageProps }) {
         ></meta>
       </Head>
       <main className="bg-sk-bg text-sk-fg leading-snug select-none">
-        {isFirstTimeUsing ? <FirstTime /> : <Component {...pageProps} />}
+        {isFirstTimeUsing ? (
+          <>
+            <FirstTime />
+            <Component {...pageProps} />
+          </>
+        ) : (
+          <Component {...pageProps} />
+        )}
       </main>
     </>
   );
