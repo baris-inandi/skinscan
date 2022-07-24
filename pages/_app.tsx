@@ -1,8 +1,10 @@
 import Head from "next/head";
 import React, { useEffect, useState } from "react";
+import Router from "next/router";
 
 import FirstTime from "../components/FirstTime/FirstTime";
-import { createStore, get, set, clear as clearStore } from "../store/store";
+import { createStore, get, set, clear as clearStore } from "../lib/store/store";
+import overrides from "../lib/overrides";
 
 import "tailwindcss/tailwind.css";
 import "@ionic/react/css/core.css";
@@ -16,28 +18,35 @@ import "@ionic/react/css/display.css";
 import "../styles/global.css";
 import "../styles/variables.css";
 
-const forceWelcomeOnStartup = false;
-
 function App({ Component, pageProps }) {
   const [showWelcome, setShowWelcome] = useState(false);
   const [storeAccessed, setStoreAccessed] = useState(false);
 
   useEffect(() => {
-    const setupStore = async () => {
+    const f = async () => {
+      let noFirstTime: boolean;
       await createStore("__sk_store");
-      if (forceWelcomeOnStartup) {
+      if (overrides.forceWelcomeOnStartup) {
         clearStore();
         setShowWelcome(true);
         setStoreAccessed(true);
-        return;
+        noFirstTime = false;
+      } else {
+        const noFirstTimeRaw = await get("noFirstTime");
+        noFirstTime = noFirstTimeRaw === true ? true : false;
+        set("noFirstTime", true);
+        setShowWelcome(!noFirstTime);
+        setStoreAccessed(true);
       }
-      const noFirstTimeRaw = await get("noFirstTime");
-      const noFirstTime = noFirstTimeRaw === true ? true : false;
-      set("noFirstTime", true);
-      setShowWelcome(!noFirstTime);
-      setStoreAccessed(true);
+      if (noFirstTime && !overrides.overrideMandatoryAuth) {
+        const isAuthenticatedRaw = await get("isAuthenticated");
+        const isAuthenticated = isAuthenticatedRaw === true ? true : false;
+        if (!isAuthenticated) {
+          Router.replace("/accounts/create");
+        }
+      }
     };
-    setupStore();
+    f();
   }, []);
 
   return (

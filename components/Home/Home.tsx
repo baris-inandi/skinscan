@@ -4,7 +4,7 @@ import Hero from "./Hero/Hero";
 const Home: React.FC = () => {
   return (
     <div>
-      <Hero />;
+      <Hero />
     </div>
   );
 };
