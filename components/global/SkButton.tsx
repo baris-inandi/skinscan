@@ -16,9 +16,11 @@ const SkButton: React.FC<Props> = (props) => {
     <button
       type={props.type}
       onClick={!props.disabled ? props.onclick : () => {}}
-      className={`text-center ${
-        props.snug ? "text-sm px-6 py-3" : "text-base px-8 py-3"
-      } ${props.fill && "w-full"} cursor-pointer rounded-full font-sk ${
+      className={`
+      transition duration-200
+      text-center ${props.snug ? "text-sm px-6 py-3" : "text-base px-8 py-3"} ${
+        props.fill && "w-full"
+      } cursor-pointer rounded-full font-sk ${
         props.outlined
           ? "border " +
             (props.negative

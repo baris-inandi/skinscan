@@ -36,8 +36,8 @@ const InitialOverlay: React.FC = () => {
             How does it work?
           </SkButton>
         </div>
-        <div className="bottom-0 right-0 fixed py-10 px-8 safe-area-bottom">
-          <div className="w-12 h-12 bg-sk flex items-center justify-center rounded-full shadow-lg backdrop-blur-md">
+        <div className="bottom-0 right-0 fixed py-14 px-10 safe-area-bottom">
+          <div className="w-12 h-12 bg-sk flex items-center justify-center rounded-2xl">
             <IonIcon
               onClick={() => {
                 takePhoto(true);
