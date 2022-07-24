@@ -1,8 +1,14 @@
 import { Camera, CameraResultType, CameraSource } from "@capacitor/camera";
 import { get } from "../lib/store/store";
 
+interface ICameraRequest {
+  success: boolean;
+  id?: string;
+  datauri: string;
+}
+
 const useCamera = () => {
-  const takePhoto = async (fromPhotos: boolean) => {
+  const takePhoto = async (fromPhotos: boolean): Promise<ICameraRequest> => {
     try {
       const photo = await Camera.getPhoto({
         resultType: CameraResultType.Base64,
@@ -11,6 +17,11 @@ const useCamera = () => {
         presentationStyle: "popover",
         allowEditing: true,
       });
+      let out: ICameraRequest = {
+        success: false,
+        id: undefined,
+        datauri: photo.dataUrl!,
+      };
       fetch("http://skinscan.withskyfallen.com/upload", {
         method: "POST",
         headers: {
@@ -20,17 +31,18 @@ const useCamera = () => {
           token: await get("currentUserToken"),
           file: photo.base64String!,
         }),
-      })
-        .then(async (res) => {
-          let scanid = (await res.json()).scanid
-          alert("Scan submitted");
-        })
-        .catch((error) => {
-          alert(error);
-        });
-      return photo;
+      }).then(async (res) => {
+        const _id = String((await res.json()).scanid);
+        out.id = _id;
+        out.success = true;
+      });
+      return out;
     } finally {
-      return undefined;
+      return {
+        success: false,
+        id: undefined,
+        datauri: "",
+      };
     }
   };
 

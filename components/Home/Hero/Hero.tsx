@@ -46,7 +46,13 @@ const InitialOverlay: React.FC = () => {
           </div>
           <SkButton
             onClick={() => {
-              takePhoto(false);
+              takePhoto(false).then((_id) => {
+                if (_id) {
+                  Router.replace(`/loop/${_id}`);
+                  return;
+                }
+                Router.replace("/looperr");
+              });
             }}
           >
             Submit your photo
