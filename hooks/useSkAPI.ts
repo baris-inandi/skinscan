@@ -7,7 +7,7 @@ interface ICameraRequest {
   datauri: string;
 }
 
-const useCamera = () => {
+const useSkAPI = () => {
   const takePhoto = async (fromPhotos: boolean): Promise<ICameraRequest> => {
     try {
       const photo = await Camera.getPhoto({
@@ -22,6 +22,7 @@ const useCamera = () => {
         id: undefined,
         datauri: photo.dataUrl!,
       };
+      console.log(photo.dataUrl);
       fetch("http://skinscan.withskyfallen.com/upload", {
         method: "POST",
         headers: {
@@ -51,4 +52,4 @@ const useCamera = () => {
   };
 };
 
-export default useCamera;
+export default useSkAPI;

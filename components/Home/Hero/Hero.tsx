@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import useCamera from "../../../hooks/useCamera";
+import useSkAPI from "../../../hooks/useSkAPI";
 import SkButton from "../../global/SkButton";
 import NotchLogo from "../../global/NotchLogo";
 import Router from "next/router";
@@ -7,7 +7,7 @@ import { createStore, get } from "../../../lib/store/store";
 import { logout } from "../../../lib/auth";
 
 const InitialOverlay: React.FC = () => {
-  const { takePhoto } = useCamera();
+  const { takePhoto } = useSkAPI();
   const [email, setEmail] = useState("");
 
   useEffect(() => {
@@ -46,12 +46,12 @@ const InitialOverlay: React.FC = () => {
           </div>
           <SkButton
             onClick={() => {
-              takePhoto(false).then((_id) => {
-                if (_id) {
-                  Router.replace(`/loop/${_id}`);
+              takePhoto(false).then((r) => {
+                console.log(r);
+                if (r.success) {
+                  Router.replace(`/loop/${r.id}`);
                   return;
                 }
-                Router.replace("/looperr");
               });
             }}
           >
