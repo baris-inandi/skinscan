@@ -47,13 +47,17 @@ function App({ Component, pageProps }) {
       if (noFirstTime && !overrides.overrideMandatoryAuth) {
         const isAuthenticatedRaw = await get("isAuthenticated");
         const isAuthenticated = isAuthenticatedRaw === true ? true : false;
-        if (!isAuthenticated) {
+        if (!isAuthenticated && Router.asPath !== "/onboarding") {
           Router.replace("/accounts/create");
         }
       }
     };
     f();
   }, []);
+
+  if (storeAccessed && showWelcome) {
+    Router.replace("/onboarding");
+  }
 
   return (
     <>
@@ -63,18 +67,9 @@ function App({ Component, pageProps }) {
           content="width=device-width, initial-scale=1.0, viewport-fit=cover"
         ></meta>
       </Head>
-      {storeAccessed && (
-        <>
-          {showWelcome !== null && (
-            <main className="bg-sk-bg text-sk-fg leading-snug select-none">
-              <>
-                {showWelcome && <FirstTime />}
-                <Component {...pageProps} />
-              </>
-            </main>
-          )}
-        </>
-      )}
+      <main className="bg-sk-bg text-sk-fg leading-snug select-none">
+        <Component {...pageProps} />
+      </main>
     </>
   );
 }

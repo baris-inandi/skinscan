@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import SkButton from "../../global/SkButton";
 
 interface Props {
@@ -14,10 +14,15 @@ interface Props {
 const Greeter: React.FC<Props> = (props) => {
   const [posX, setPosX] = React.useState("0%");
   const [elemFilter, setElemFilter] = React.useState("none");
+  const killThis = () => {
+    setPosX("-150%");
+    setElemFilter("brightness(.5)");
+  };
   return (
     <div
-      className="w-screen h-screen fixed top-0 left-0 font-sk px-12 text-center bg-sk-bg transition-all duration-1000 ease-in-out shadow-xl rounded-3xl"
+      className="w-screen h-screen fixed top-0 left-0 font-sk px-12 text-center bg-sk-bg transition-all duration-1000 ease-in-out shadow-2xl"
       style={{
+        outline: "10px solid black",
         zIndex: 1000 - props.order,
         transform: `translateX(${posX})`,
         filter: elemFilter,
@@ -30,14 +35,9 @@ const Greeter: React.FC<Props> = (props) => {
       <div className="fixed bottom-0 left-0 w-screen h-fit-contents flex items-center justify-center">
         <div className="w-full py-8 px-7 flex gap-4">
           <SkButton
-            onclick={
-              props.overrideFunction
-                ? props.overrideFunction
-                : () => {
-                    setPosX("-150%");
-                    setElemFilter("brightness(2.5)");
-                  }
-            }
+            onclick={() => {
+              props.overrideFunction ? props.overrideFunction() : killThis();
+            }}
             fill
             snug={props.secondaryButtonContent !== undefined}
           >
@@ -45,11 +45,11 @@ const Greeter: React.FC<Props> = (props) => {
           </SkButton>
           {props.secondaryButtonContent && (
             <SkButton
-              onclick={
+              onclick={() => {
                 props.secondaryButtonFunction
-                  ? props.secondaryButtonFunction
-                  : () => {}
-              }
+                  ? props.secondaryButtonFunction()
+                  : killThis();
+              }}
               fill
               snug={props.secondaryButtonContent !== undefined}
             >
