@@ -1,13 +1,8 @@
 {
-  "appId": "com.example.app",
-  "appName": "skinscan",
-  "bundledWebRuntime": false,
-  "npmClient": "npm",
-  "webDir": "out",
-  "plugins": {
-    "SplashScreen": {
-      "launchShowDuration": 0
-    }
-  },
-  "cordova": {}
+	"appId": "com.skinscan.app",
+	"appName": "skinscan",
+	"bundledWebRuntime": false,
+	"npmClient": "pnpm",
+	"webDir": "out",
+	"cordova": {}
 }
