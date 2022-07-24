@@ -7,11 +7,12 @@ use_frameworks!
 install! 'cocoapods', :disable_input_output_paths => true
 
 def capacitor_pods
-  pod 'Capacitor', :path => '../../node_modules/@capacitor/ios'
-  pod 'CapacitorCordova', :path => '../../node_modules/@capacitor/ios'
-  pod 'CapacitorCamera', :path => '../../node_modules/@capacitor/camera'
-  pod 'CapacitorStatusBar', :path => '../../node_modules/@capacitor/status-bar'
-  pod 'CapacitorStorage', :path => '../../node_modules/@capacitor/storage'
+  pod 'Capacitor', :path => '../../node_modules/.pnpm/@capacitor+ios@3.6.0_@capacitor+core@3.6.0/node_modules/@capacitor/ios'
+  pod 'CapacitorCordova', :path => '../../node_modules/.pnpm/@capacitor+ios@3.6.0_@capacitor+core@3.6.0/node_modules/@capacitor/ios'
+  pod 'CapacitorFirebaseAuthentication', :path => '../../node_modules/.pnpm/@capacitor-firebase+authentication@0.5.0_fmyhshzldtwfmzrkodwj2gi7ge/node_modules/@capacitor-firebase/authentication'
+  pod 'CapacitorCamera', :path => '../../node_modules/.pnpm/@capacitor+camera@1.3.1_@capacitor+core@3.6.0/node_modules/@capacitor/camera'
+  pod 'CapacitorStatusBar', :path => '../../node_modules/.pnpm/@capacitor+status-bar@1.0.8_@capacitor+core@3.6.0/node_modules/@capacitor/status-bar'
+  pod 'CapacitorStorage', :path => '../../node_modules/.pnpm/@capacitor+storage@1.2.5_@capacitor+core@3.6.0/node_modules/@capacitor/storage'
   pod 'CordovaPlugins', :path => '../capacitor-cordova-ios-plugins'
 end
 

@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@awesome-cordova-plugins/camera-preview': ^5.44.0
+  '@capacitor-firebase/authentication': ^0.5.0
   '@capacitor/android': ^3.0.1
   '@capacitor/camera': ^1.3.1
   '@capacitor/cli': ^3.0.1
@@ -22,6 +23,7 @@ specifiers:
   firebase: ^9.9.1
   ionicons: ^5.2.3
   next: ^12.2.0
+  pnpm: ^7.6.0
   postcss: ^8.3.5
   prettier: ^2.2.1
   pullstate: '1.24'
@@ -36,6 +38,7 @@ specifiers:
 
 dependencies:
   '@awesome-cordova-plugins/camera-preview': 5.44.0_zuvf63os36jyc5em5biagvpyka
+  '@capacitor-firebase/authentication': 0.5.0_fmyhshzldtwfmzrkodwj2gi7ge
   '@capacitor/android': 3.6.0_@capacitor+core@3.6.0
   '@capacitor/camera': 1.3.1_@capacitor+core@3.6.0
   '@capacitor/cli': 3.6.0
@@ -52,6 +55,7 @@ dependencies:
   cordova-plugin-camera-preview: 0.12.3
   firebase: 9.9.1
   next: 12.2.3_biqbaboplfbrettd7655fr4n2y
+  pnpm: 7.6.0
   postcss: 8.4.14
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -130,6 +134,16 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.9
+
+  /@capacitor-firebase/authentication/0.5.0_fmyhshzldtwfmzrkodwj2gi7ge:
+    resolution: {integrity: sha512-xOlzAlQRN2zu4OuvZhV2qIYs4wk9SvGlcDsqIcB6GbRObTb7GFNjWTJ+ljH8Th/49GuJ+FORWx4erw22BFjOXQ==}
+    peerDependencies:
+      '@capacitor/core': ^3.0.0
+      firebase: ^9.0.0
+    dependencies:
+      '@capacitor/core': 3.6.0
+      firebase: 9.9.1
+    dev: false
 
   /@capacitor/android/3.6.0_@capacitor+core@3.6.0:
     resolution: {integrity: sha512-X6n0OLy7BE3c6qfVuL7UYyq/aIwEsqIAqtyDOwMdj5k+P1rLQVsGaWERXUtC0BGeoKBD5YgbWiyKwAwg5Spjdg==}
@@ -3108,6 +3122,12 @@ packages:
     dependencies:
       base64-js: 1.5.1
       xmlbuilder: 15.1.1
+    dev: false
+
+  /pnpm/7.6.0:
+    resolution: {integrity: sha512-pCFZ4OSM3M7JUHShnmk4Hlt9A8QDxLx+i+9kkK4g60YuYhhhD3oqBfWrHax0/XMDvr7GwK0fqFjA8iD8HlZ8Kw==}
+    engines: {node: '>=14.6'}
+    hasBin: true
     dev: false
 
   /postcss-js/3.0.3:

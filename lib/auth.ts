@@ -2,8 +2,8 @@
 
 import { createStore, set, get } from "../lib/store/store";
 import Router from "next/router";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { initializeApp } from 'firebase/app';
+import { FirebaseAuthentication } from '@capacitor-firebase/authentication';
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_PUBLIC_API_KEY,
@@ -13,43 +13,36 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
-const auth = getAuth();
-
 export const login = async (email: string, password: string) => {
   await createStore("__sk_store");
-  signInWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    userCredential.user.getIdToken(true).then(function(idToken) {
-      set("currentUserToken", idToken);  
-      set("isAuthenticated", true);
-      Router.replace("/");
-      console.log(idToken)
-    }).catch(function(error) {
-      return false
+  try{
+    await FirebaseAuthentication.signInWithEmailAndPassword({
+      email,
+      password
     });
-  })
-  .catch((error) => {
+  } catch(any){
     return false
-  });
-  return false
+  }
+
+  let tkresult = await FirebaseAuthentication.getIdToken();
+  set("currentUserToken", tkresult.token);  
+  set("isAuthenticated", true);
+  Router.replace("/");
+
+  return true
 };
 
 export const signup = async (email: string, password: string) => {
   await createStore("__sk_store");
-  createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    userCredential.user.getIdToken(true).then(function(idToken) {
-      set("currentUserToken", idToken);  
-      set("isAuthenticated", true);
-      Router.replace("/");
-    }).catch(function(error) {
-      return false
-    });
-  })
-  .catch((error) => {
-    return false
+  await FirebaseAuthentication.createUserWithEmailAndPassword({
+    email,
+    password
   });
-  return false
+  let result = await FirebaseAuthentication.getIdToken();
+  set("currentUserToken", result.token);  
+  set("isAuthenticated", true);
+  Router.replace("/");
+  return true
 };
 
 export const logout = async () => {
