@@ -11,7 +11,7 @@ const useCamera = () => {
         presentationStyle: "popover",
         allowEditing: true,
       });
-      fetch("http://192.168.0.29:8000/upload", {
+      fetch("http://skinscan.withskyfallen.com/upload", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
