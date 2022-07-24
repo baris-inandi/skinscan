@@ -1,5 +1,6 @@
 import { Camera, CameraResultType, CameraSource } from "@capacitor/camera";
 import { get } from "../lib/store/store";
+import { logout } from "../lib/auth";
 
 interface ICameraRequest {
   success: boolean;
@@ -23,7 +24,7 @@ const useSkAPI = () => {
         datauri: photo.dataUrl!,
       };
       console.log(photo.dataUrl);
-      fetch("http://skinscan.withskyfallen.com/upload", {
+      fetch("https://skinscan.withskyfallen.com/upload", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -32,28 +33,20 @@ const useSkAPI = () => {
           token: await get("currentUserToken"),
           file: photo.base64String!,
         }),
-<<<<<<< HEAD
-      }).then(async (res) => {
-        let errorMsg = (await res.text())
-        if(errorMsg === "Internal Server Error"){
-          alert("Session expired. Please log out and log in again.")
-          return false
-        }
-        const _id = String((await res.json()).scanid);
-        out.id = _id;
-        out.success = true;
-      });
-=======
       })
         .then(async (res) => {
-          const _id = String((await res.json()).scanid);
-          out.id = _id;
-          out.success = true;
+          let errorMsg = await res.text();
+          if (errorMsg === "Internal Server Error") {
+            logout();
+          } else {
+            const _id = String((await res.json()).scanid);
+            out.id = _id;
+            out.success = true;
+          }
         })
         .catch((err) => {
           console.log(err);
         });
->>>>>>> 1fea05b (commit)
       return out;
     } catch (e) {
       console.log(e);
