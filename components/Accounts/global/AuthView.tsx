@@ -48,8 +48,6 @@ const AuthView: React.FC<Props> = (props) => {
     setPasswordValid(validatePassword(password));
     setPasswordEmpty(!(password.length > 0));
     setEmailEmpty(!(email.length > 0));
-    console.log("emailValid: ", emailValid);
-    console.log("emailEmpty: ", emailEmpty);
     setVirgin(false);
   };
   return (
