@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import SkButton from "../../global/SkButton";
 import NotchLogo from "../../global/NotchLogo";
+import { useIonAlert } from "@ionic/react";
 
 interface Props {
   title: string;
   emailInputText: string;
   passwordInputText: string;
-  authHandler: (email: string, password: string) => Promise<void>;
+  authHandler: (email: string, password: string) => Promise<boolean>;
   primaryButtonText: string;
   secondaryButtonText: string;
   secondaryButtonFunction: () => void;
@@ -21,6 +22,8 @@ const AuthView: React.FC<Props> = (props) => {
 
   const [virgin, setVirgin] = useState(true);
 
+  const [presentAlert] = useIonAlert();
+
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (
     event
   ) => {
@@ -28,7 +31,14 @@ const AuthView: React.FC<Props> = (props) => {
     event.preventDefault();
     const email = String(formData.get("email"));
     const password = String(formData.get("password"));
-    return await props.authHandler(email, password);
+    const authSuccess = await props.authHandler(email, password);
+    if (!authSuccess) {
+      presentAlert({
+        header: "Authentication failed",
+        message: "Please try again",
+        buttons: ["OK"],
+      });
+    }
   };
   const handleChange: React.FormEventHandler<HTMLFormElement> = (event) => {
     const validateEmail = (email: string) => {
