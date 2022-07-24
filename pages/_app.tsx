@@ -16,7 +16,7 @@ import "@ionic/react/css/display.css";
 import "../styles/global.css";
 import "../styles/variables.css";
 
-const isFirstTimeUsing = false;
+const isFirstTimeUsing = true;
 
 function App({ Component, pageProps }) {
   return (

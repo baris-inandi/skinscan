@@ -6,6 +6,9 @@ interface Props {
   title: string;
   content: string;
   btnContent: string;
+  overrideFunction?: () => void;
+  secondaryButtonContent?: string;
+  secondaryButtonFunction?: () => void;
 }
 
 const Greeter: React.FC<Props> = (props) => {
@@ -25,16 +28,34 @@ const Greeter: React.FC<Props> = (props) => {
         <p>{props.content}</p>
       </div>
       <div className="fixed bottom-0 left-0 w-screen h-fit-contents flex items-center justify-center">
-        <div className="w-full py-8 px-7">
+        <div className="w-full py-8 px-7 flex gap-4">
           <SkButton
-            onclick={() => {
-              setPosX("-150%");
-              setElemFilter("brightness(2.5)");
-            }}
+            onclick={
+              props.overrideFunction
+                ? props.overrideFunction
+                : () => {
+                    setPosX("-150%");
+                    setElemFilter("brightness(2.5)");
+                  }
+            }
             fill
+            snug={props.secondaryButtonContent !== undefined}
           >
             {props.btnContent}
           </SkButton>
+          {props.secondaryButtonContent && (
+            <SkButton
+              onclick={
+                props.secondaryButtonFunction
+                  ? props.secondaryButtonFunction
+                  : () => {}
+              }
+              fill
+              snug={props.secondaryButtonContent !== undefined}
+            >
+              {props.secondaryButtonContent}
+            </SkButton>
+          )}
         </div>
       </div>
     </div>

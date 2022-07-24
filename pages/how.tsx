@@ -1,8 +1,10 @@
+import dynamic from "next/dynamic";
 import React from "react";
-import Component from "../components/How/How";
 
-const How: React.FC = () => {
-  return <Component />;
-};
+const App = dynamic(() => import("../components/How/How"), {
+  ssr: false,
+});
 
-export default How;
+export default function Index() {
+  return <App />;
+}
