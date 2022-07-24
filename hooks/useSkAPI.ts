@@ -24,6 +24,7 @@ const useSkAPI = () => {
         datauri: photo.dataUrl!,
       };
       console.log(photo.dataUrl);
+      // test commit
       fetch("https://skinscan.withskyfallen.com/upload", {
         method: "POST",
         headers: {
