@@ -32,7 +32,7 @@ const FirstTime: React.FC = () => {
       <Greeter
         order={5}
         title="Skinscan account"
-        content="One last step: create an account or log in to continue"
+        content="One last step: create a Skinscan account or log in to your existing account"
         btnContent="Create Account"
         overrideFunction={() => {
           Router.replace("/accounts/create");
