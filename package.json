@@ -23,6 +23,7 @@
     "@capacitor/storage": "^1.2.5",
     "@ionic/react": "^6.1.12",
     "@ionic/react-router": "^6.1.12",
+    "@ionic/storage": "^3.0.6",
     "autoprefixer": "^10.2.6",
     "classnames": "^2.2.6",
     "cordova-plugin-camera-preview": "^0.12.3",
