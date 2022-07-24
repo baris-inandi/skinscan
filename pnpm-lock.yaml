@@ -9,6 +9,7 @@ specifiers:
   '@capacitor/ios': ^3.0.1
   '@capacitor/status-bar': ^1.0.1
   '@capacitor/storage': ^1.2.5
+  '@ionic/pwa-elements': ^3.1.1
   '@ionic/react': ^6.1.12
   '@ionic/react-router': ^6.1.12
   '@ionic/storage': ^3.0.6
@@ -42,6 +43,7 @@ dependencies:
   '@capacitor/ios': 3.6.0_@capacitor+core@3.6.0
   '@capacitor/status-bar': 1.0.8_@capacitor+core@3.6.0
   '@capacitor/storage': 1.2.5_@capacitor+core@3.6.0
+  '@ionic/pwa-elements': 3.1.1
   '@ionic/react': 6.1.15_biqbaboplfbrettd7655fr4n2y
   '@ionic/react-router': 6.1.15_jsysfhissp7fmoob3bakvndu5q
   '@ionic/storage': 3.0.6
@@ -756,6 +758,10 @@ packages:
       '@stencil/core': 2.17.1
       ionicons: 6.0.2
       tslib: 2.4.0
+    dev: false
+
+  /@ionic/pwa-elements/3.1.1:
+    resolution: {integrity: sha512-BoEX1pSrKn5dP4VQwaf8DweAmT4ynmpW+9f6oj/W1xLe54bmuXcUY07ziuZX1DLu50xHSYcO5qJ/dbYC/w6wgA==}
     dev: false
 
   /@ionic/react-router/6.1.15_jsysfhissp7fmoob3bakvndu5q:

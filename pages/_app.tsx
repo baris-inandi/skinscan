@@ -2,6 +2,8 @@ import Head from "next/head";
 import React, { useEffect, useState } from "react";
 import Router from "next/router";
 
+import { defineCustomElements } from "@ionic/pwa-elements/loader";
+
 import FirstTime from "../components/FirstTime/FirstTime";
 import { createStore, get, set, clear as clearStore } from "../lib/store/store";
 import overrides from "../lib/overrides";
@@ -21,6 +23,10 @@ import "../styles/variables.css";
 function App({ Component, pageProps }) {
   const [showWelcome, setShowWelcome] = useState(false);
   const [storeAccessed, setStoreAccessed] = useState(false);
+
+  useEffect(() => {
+    defineCustomElements(window);
+  }, []);
 
   useEffect(() => {
     const f = async () => {
