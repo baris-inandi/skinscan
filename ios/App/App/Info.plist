@@ -52,6 +52,10 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>We need to access your photo library to let you select from your already taken photos.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We need to access your photo library to let you select from your already taken photos.</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
 </dict>

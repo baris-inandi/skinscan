@@ -11,7 +11,7 @@ const useCamera = () => {
         presentationStyle: "popover",
         allowEditing: true,
       });
-      fetch("/api/upload", {
+      fetch("http://192.168.0.29:8000/upload", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -21,8 +21,9 @@ const useCamera = () => {
           file: photo.base64String!,
         }),
       })
-        .then((res) => {
-          alert("Scan submitted.");
+        .then(async (res) => {
+          let scanid = (await res.json()).scanid
+          alert("Scan submitted");
         })
         .catch((error) => {
           alert(error);
