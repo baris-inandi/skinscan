@@ -33,6 +33,11 @@ const useSkAPI = () => {
           file: photo.base64String!,
         }),
       }).then(async (res) => {
+        let errorMsg = (await res.text())
+        if(errorMsg === "Internal Server Error"){
+          alert("Session expired. Please log out and log in again.")
+          return false
+        }
         const _id = String((await res.json()).scanid);
         out.id = _id;
         out.success = true;
