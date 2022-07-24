@@ -7,7 +7,7 @@ interface Props {
   disabled?: boolean;
   snug?: boolean;
   type?: "button" | "submit" | "reset";
-  onclick: () => void;
+  onClick: () => void;
   children: React.ReactNode;
 }
 
@@ -15,7 +15,7 @@ const SkButton: React.FC<Props> = (props) => {
   return (
     <button
       type={props.type}
-      onClick={!props.disabled ? props.onclick : () => {}}
+      onClick={!props.disabled ? props.onClick : () => {}}
       className={`
       transition duration-200
       text-center ${props.snug ? "text-sm px-6 py-3" : "text-base px-8 py-3"} ${

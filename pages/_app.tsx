@@ -4,7 +4,6 @@ import Router from "next/router";
 
 import { defineCustomElements } from "@ionic/pwa-elements/loader";
 
-import FirstTime from "../components/FirstTime/FirstTime";
 import { createStore, get, set, clear as clearStore } from "../lib/store/store";
 import overrides from "../lib/overrides";
 
@@ -38,15 +37,13 @@ function App({ Component, pageProps }) {
         setStoreAccessed(true);
         noFirstTime = false;
       } else {
-        const noFirstTimeRaw = await get("noFirstTime");
-        noFirstTime = noFirstTimeRaw === true ? true : false;
+        noFirstTime = Boolean(await get("noFirstTime"));
         set("noFirstTime", true);
         setShowWelcome(!noFirstTime);
         setStoreAccessed(true);
       }
       if (noFirstTime && !overrides.overrideMandatoryAuth) {
-        const isAuthenticatedRaw = await get("isAuthenticated");
-        const isAuthenticated = isAuthenticatedRaw === true ? true : false;
+        const isAuthenticated = Boolean(await get("isAuthenticated"));
         if (!isAuthenticated && Router.asPath !== "/onboarding") {
           Router.replace("/accounts/create");
         }

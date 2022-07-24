@@ -88,7 +88,7 @@ const AuthView: React.FC<Props> = (props) => {
         >
           <SkErr
             level="err"
-            content="Authentication failed, please try again later."
+            content="Authentication failed. Please check your email and password."
           />
         </div>
       </div>
@@ -96,7 +96,7 @@ const AuthView: React.FC<Props> = (props) => {
         <div className="w-full py-8 px-7 flex flex-col gap-3">
           <div className={virgin ? "pointer-events-none" : ""}>
             <SkButton
-              onclick={() => {}}
+              onClick={() => {}}
               fill
               disabled={(!passwordValid || !emailValid) && !virgin}
               type="submit"
@@ -105,7 +105,7 @@ const AuthView: React.FC<Props> = (props) => {
             </SkButton>
           </div>
           <SkButton
-            onclick={props.secondaryButtonFunction}
+            onClick={props.secondaryButtonFunction}
             fill
             outlined
             type="button"

@@ -35,7 +35,7 @@ const Greeter: React.FC<Props> = (props) => {
       <div className="fixed bottom-0 left-0 w-screen h-fit-contents flex items-center justify-center">
         <div className="w-full py-8 px-7 flex gap-4">
           <SkButton
-            onclick={() => {
+            onClick={() => {
               props.overrideFunction ? props.overrideFunction() : killThis();
             }}
             fill
@@ -45,7 +45,7 @@ const Greeter: React.FC<Props> = (props) => {
           </SkButton>
           {props.secondaryButtonContent && (
             <SkButton
-              onclick={() => {
+              onClick={() => {
                 props.secondaryButtonFunction
                   ? props.secondaryButtonFunction()
                   : killThis();
