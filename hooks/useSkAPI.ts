@@ -35,11 +35,11 @@ const useSkAPI = () => {
         }),
       })
         .then(async (res) => {
-          let errorMsg = await res.text();
-          if (errorMsg === "Internal Server Error") {
+          let rspTxt = await res.text();
+          if (rspTxt === "Internal Server Error") {
             logout();
           } else {
-            const _id = String((await res.json()).scanid);
+            const _id = String(JSON.parse(rspTxt).scanid);
             out.id = _id;
             out.success = true;
           }
