@@ -1,23 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import useSkAPI from "../../../hooks/useSkAPI";
 import SkButton from "../../global/SkButton";
 import NotchLogo from "../../global/NotchLogo";
 import Router from "next/router";
-import { createStore, get } from "../../../lib/store/store";
 import { logout } from "../../../lib/auth";
 
 const InitialOverlay: React.FC = () => {
   const { takePhoto } = useSkAPI();
-  const [email, setEmail] = useState("");
-
-  useEffect(() => {
-    const f = async () => {
-      await createStore();
-      const email = String(await get("currentUserEmail"));
-      setEmail(email);
-    };
-    f();
-  }, [setEmail]);
 
   return (
     <div>
@@ -30,12 +19,8 @@ const InitialOverlay: React.FC = () => {
         onClick={logout}
         className="fixed right-0 top-0 safe-area-top self-end"
       >
-        <div className="m-2 border border-sk-sub text-xs p-1 rounded-full flex items-center justify-between gap-2">
-          <span className="text-sk-sub pl-4 font-medium">Logout</span>
-          <div className="uppercase text-sm rounded-full flex items-center justify-center font-medium font-sk bg-sk-err-bg h-7 w-7 text-sk">{`${email.slice(
-            0,
-            1
-          )}`}</div>
+        <div className="m-2 text-sk-sub font-medium border border-sk-sub text-sm p-2 px-5 rounded-full flex items-center justify-between gap-2">
+          Logout
         </div>
       </div>
       <div className="h-screen w-screen fixed top-0 left-0 font-sk">
