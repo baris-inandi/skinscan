@@ -32,6 +32,7 @@ const useSkAPI = () => {
           token: await get("currentUserToken"),
           file: photo.base64String!,
         }),
+<<<<<<< HEAD
       }).then(async (res) => {
         let errorMsg = (await res.text())
         if(errorMsg === "Internal Server Error"){
@@ -42,8 +43,20 @@ const useSkAPI = () => {
         out.id = _id;
         out.success = true;
       });
+=======
+      })
+        .then(async (res) => {
+          const _id = String((await res.json()).scanid);
+          out.id = _id;
+          out.success = true;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+>>>>>>> 1fea05b (commit)
       return out;
-    } finally {
+    } catch (e) {
+      console.log(e);
       return {
         success: false,
         id: undefined,
