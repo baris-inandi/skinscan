@@ -40,7 +40,9 @@ const useSkAPI = () => {
             logout();
           } else {
             const _id = String(JSON.parse(rspTxt).scanid);
+            console.log(_id);
             out.id = _id;
+            console.log(out);
             out.success = true;
           }
         })
