@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import SkButton from "../../global/SkButton";
 import NotchLogo from "../../global/NotchLogo";
 import SkErr from "../../global/SkErr";
-import { createStore, get } from "../../../lib/store/store";
-import Router from "next/router";
 
 interface Props {
   title: string;
@@ -22,16 +20,6 @@ const AuthView: React.FC<Props> = (props) => {
   const [passwordEmpty, setPasswordEmpty] = useState(true);
   const [virgin, setVirgin] = useState(true);
   const [authErr, setAuthErr] = useState(false);
-
-  useEffect(() => {
-    const f = async () => {
-      await createStore("__sk_store");
-      if (Boolean(get("isAuthenticated"))) {
-        Router.replace("/");
-      }
-    };
-    f();
-  }, []);
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (
     event

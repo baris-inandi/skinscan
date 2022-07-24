@@ -44,6 +44,7 @@ function App({ Component, pageProps }) {
       }
       if (noFirstTime && !overrides.overrideMandatoryAuth) {
         const isAuthenticated = Boolean(await get("isAuthenticated"));
+        console.log(isAuthenticated);
         if (!isAuthenticated && Router.asPath !== "/onboarding") {
           Router.replace("/accounts/create");
         }
