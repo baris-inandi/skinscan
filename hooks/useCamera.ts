@@ -1,4 +1,5 @@
 import { Camera, CameraResultType, CameraSource } from "@capacitor/camera";
+import { get } from "../lib/store/store";
 
 const useCamera = () => {
   const takePhoto = async (fromPhotos: boolean) => {
@@ -10,7 +11,20 @@ const useCamera = () => {
         presentationStyle: "popover",
         allowEditing: true,
       });
-      console.log(photo.dataUrl);
+      fetch("/api/upload", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          token: await get("currentUserToken"),
+          file: photo.dataUrl!.replace("data:image/jpeg;base64","")
+        })
+      }).then((res) => {
+        alert("Scan submitted.")
+      }).catch((error) => {
+        alert(error)
+      })
       return photo;
     } finally {
       return undefined;

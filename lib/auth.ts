@@ -23,6 +23,7 @@ export const login = async (email: string, password: string) => {
       set("currentUserToken", idToken);  
       set("isAuthenticated", true);
       Router.replace("/");
+      console.log(idToken)
     }).catch(function(error) {
       return false
     });
