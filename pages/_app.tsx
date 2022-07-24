@@ -8,7 +8,6 @@ import FirstTime from "../components/FirstTime/FirstTime";
 import { createStore, get, set, clear as clearStore } from "../lib/store/store";
 import overrides from "../lib/overrides";
 
-import "tailwindcss/tailwind.css";
 import "@ionic/react/css/core.css";
 import "@ionic/react/css/padding.css";
 import "@ionic/react/css/float-elements.css";
@@ -18,6 +17,7 @@ import "@ionic/react/css/flex-utils.css";
 import "@ionic/react/css/display.css";
 
 import "../styles/global.css";
+import "../styles/tailwind.css";
 import "../styles/variables.css";
 
 function App({ Component, pageProps }) {
