@@ -2,9 +2,9 @@
 
 ## Contributors
 
-Barış İnandıoğlu [@baris-inandi](https://github.com/baris-inandi)
-Yiğit Kerem Oktay [@yigitkeremoktay](https://github.com/yigitkeremoktay)
-Alp Niksarlı [@alpnix](https://github.com/alpnix)
+- Barış İnandıoğlu [@baris-inandi](https://github.com/baris-inandi)
+- Yiğit Kerem Oktay [@yigitkeremoktay](https://github.com/yigitkeremoktay)
+- Alp Niksarlı [@alpnix](https://github.com/alpnix)
 
 ## What is SkinScan?
 
