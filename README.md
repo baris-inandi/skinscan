@@ -1,5 +1,11 @@
 # Introduction
 
+## Contributors
+
+Barış İnandıoğlu [@baris-inandi](https://github.com/baris-inandi)
+Yiğit Kerem Oktay [@yigitkeremoktay](https://github.com/yigitkeremoktay)
+Alp Niksarlı [@alpnix](https://github.com/alpnix)
+
 ## What is SkinScan?
 
 SkinScan is a service aiming to provide affordable solutions to people with dermatological
@@ -129,6 +135,7 @@ needed, and see their results. In addition, they will be able to gain insight th
 condition’s dedicated page with info such as symptoms, complications, and treatments.
 
 ## More Resources
+
 - Project Drive link: <https://drive.google.com/drive/folders/1bj3r-M8NyBCrgWyyBnRNpZGI_wCkUgCo>
 - GitHub repository: <https://github.com/baris-inandi/skinscan>
 - Figma design link: <https://www.figma.com/file/wOYpIffc3C8dTDzUTwUhiY/SkinScan>

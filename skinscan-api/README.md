@@ -1,4 +1,4 @@
-# important
+# skinscan-api
 
-add the data/ directory here as input
-train the model and create skinscan.h5 before using this api
+Skinscan AI, written by Yigit Kerem Oktay [@yigitkeremoktay](https://github.com/yigitkeremoktay)
+Dataset (/data) By Alp Niksarlı [@alpnix](https://github.com/alpnix)
