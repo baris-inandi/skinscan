@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { get, createStore } from "../../../../lib/store/store";
 import { logout } from "../../../../lib/auth";
+import Analysis from from"./Analysis/Analysis";
+import ISkAnalysis from "../Interface/ISkAnalysis";
 
 interface Props {
   id: string;
-  analysisSetter: (analysis: any) => void;
 }
 
 export const ResultOverlay: React.FC<Props> = (props) => {
   const [isLooping, setIsLooping] = useState(false);
-
+  const [analysis, setAnalysis] = useState<ISkAnalysis | undefined>(undefined);
   useEffect(
     function () {
       const f = async () => {
@@ -45,10 +46,11 @@ export const ResultOverlay: React.FC<Props> = (props) => {
               `https://en.wikipedia.org/api/rest_v1/page/summary/${probs[0][0]}`
             );
             let wiki = await response.json();
-            props.analysisSetter({
+            const skAnalysis = {
               probs,
               wiki,
-            });
+            };
+            setAnalysis(skAnalysis);
           }
         }
       }, 1000);
@@ -56,7 +58,7 @@ export const ResultOverlay: React.FC<Props> = (props) => {
     [props, isLooping]
   );
 
-  return <></>;
+  return <Analysis analysis={analysis} />;
 };
 
 export default ResultOverlay;

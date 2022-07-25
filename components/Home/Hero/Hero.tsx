@@ -44,7 +44,7 @@ const InitialOverlay: React.FC = () => {
           <SkButton
             outlined
             onClick={() => {
-              Router.replace("/how");
+              Router.replace("/onboarding?how=true");
             }}
           >
             How does it work?

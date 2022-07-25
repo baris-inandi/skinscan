@@ -28,20 +28,29 @@ const FirstTime: React.FC = () => {
         title="Get insight"
         content="Skinscan provides you with helpful insight about dermatological conditions."
         btnContent="Get started"
+        overrideFunction={
+          String(Router.query.how) === "true"
+            ? () => {
+                Router.replace("/");
+              }
+            : undefined
+        }
       />
-      <Greeter
-        order={5}
-        title="Skinscan account"
-        content="One last step: create a Skinscan account or log in to your existing account"
-        btnContent="Create Account"
-        overrideFunction={() => {
-          Router.replace("/accounts/create");
-        }}
-        secondaryButtonContent="Log In"
-        secondaryButtonFunction={() => {
-          Router.replace("/accounts/login");
-        }}
-      />
+      {String(Router.query.how) !== "true" && (
+        <Greeter
+          order={5}
+          title="Skinscan account"
+          content="One last step: create a Skinscan account or log in to your existing account"
+          btnContent="Create"
+          overrideFunction={() => {
+            Router.replace("/accounts/create");
+          }}
+          secondaryButtonContent="Log In"
+          secondaryButtonFunction={() => {
+            Router.replace("/accounts/login");
+          }}
+        />
+      )}
     </div>
   );
 };
