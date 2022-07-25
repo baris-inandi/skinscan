@@ -11,6 +11,7 @@ export const ResultOverlay: React.FC<Props> = (props) => {
 
   const [isCompleted, setIsComplete] = useState(false);
   const [isLooping, setIsLooping] = useState(false);
+  const [wikiInfo, setWikiInfo] = useState({});
 
   useEffect(
     function () {
@@ -31,14 +32,25 @@ export const ResultOverlay: React.FC<Props> = (props) => {
         );
         let rspTxt = await res.text();
         if (rspTxt === "Internal Server Error") {
-        logout();
-      } else {
-        const status = String(JSON.parse(rspTxt).status);
-        if(status === "completed"){
-          setIsComplete(true)
-          clearInterval(interval)
+          logout();
+        } else {
+          const resp = JSON.parse(rspTxt);
+          if (resp.status === "completed") {
+            clearInterval(interval)
+            let probs = [];
+            for (var disease in resp.data) {
+              probs.push([disease, resp.data[disease]]);
+            }
+
+            probs.sort(function (a, b) {
+              return b[1] - a[1];
+            });
+            let response = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${probs[0][0]}`)
+            let wiki = (await response.json())
+            setWikiInfo(wiki)
+            setIsComplete(true)
+          }
         }
-      }
       }, 1000);
     },
     [props, isLooping]
