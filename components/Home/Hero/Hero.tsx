@@ -34,8 +34,7 @@ const InitialOverlay: React.FC = () => {
               takePhoto(false).then((r) => {
                 console.log(r);
                 if (r.success) {
-                  Router.replace(`/loop/${r.id}`);
-                  return;
+                  Router.replace(`/loop?id=${r.id}&img=${r.datauri}`);
                 }
               });
             }}
