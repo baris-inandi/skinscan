@@ -55,7 +55,7 @@ export const ResultOverlay: React.FC<Props> = (props) => {
             setAnalysis(skAnalysis);
           }
         }
-      }, 1000);
+      }, 3000);
     },
     [props, isLooping]
   );

@@ -1,25 +1,28 @@
-import React from "react";
-import Router from "next/router";
+import React, { useState } from "react";
 import Greeter from "../FirstTime/Greeter/Greeter";
 
 const Question: React.FC = () => {
-    return (
-        <div className="h-screen w-screen">
-            <Greeter
-                order={1}
-                title="Does it itch?"
-                content="This question helps us understand your situation better."
-                btnContent="No"
-                overrideFunction={() => {
-                    Router.replace("/loop");
-                }}
-                secondaryButtonContent="Yes"
-                secondaryButtonFunction={() => {
-                    Router.replace("/loop");
-                }}
-            />
-        </div>
-    );
+  const [visible, setVisible] = useState(true);
+  const kill = () => {
+    setVisible(false);
+  };
+  return (
+    <div className={visible ? "" : "hidden"}>
+      <Greeter
+        order={1}
+        title="Does it itch?"
+        content="This question helps us understand your situation better."
+        btnContent="No"
+        overrideFunction={() => {
+          kill();
+        }}
+        secondaryButtonContent="Yes"
+        secondaryButtonFunction={() => {
+          kill();
+        }}
+      />
+    </div>
+  );
 };
 
 export default Question;
