@@ -1,17 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Router from "next/router";
 import ResultOverlay from "./ResultOverlay/ResultOverlay";
+import { createStore, get } from "../../lib/store/store";
 
 const Loop: React.FC = () => {
-  let datauri = "";
-  const _id = Router.query.id;
+  const [datauri, setDatauri] = useState("");
+
+  useEffect(() => {
+    const f = async () => {
+      await createStore("__sk_store");
+      setDatauri(String(await get("lastDatauri")));
+    };
+    f();
+  }, [setDatauri]);
+
+  console.log(datauri);
+
   console.log(Router.query.img);
   return (
     <div>
-      <ResultOverlay id={String(_id)} />
+      <ResultOverlay id={String(Router.query.id)} />
       <div
         style={{
-          backgroundImage: `url("${Router.query.img}")`,
+          backgroundImage: `url("${datauri}")`,
         }}
         className="w-screen h-screen"
       ></div>

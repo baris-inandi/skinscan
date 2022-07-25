@@ -1,5 +1,5 @@
 import { Camera, CameraResultType, CameraSource } from "@capacitor/camera";
-import { get } from "../lib/store/store";
+import { get, set, createStore } from "../lib/store/store";
 import { logout } from "../lib/auth";
 
 interface ICameraRequest {
@@ -11,6 +11,7 @@ interface ICameraRequest {
 const useSkAPI = () => {
   const takePhoto = async (fromPhotos: boolean): Promise<ICameraRequest> => {
     try {
+      await createStore("__sk_store");
       const photo = await Camera.getPhoto({
         resultType: CameraResultType.DataUrl,
         source: fromPhotos ? CameraSource.Photos : CameraSource.Prompt,
@@ -24,9 +25,10 @@ const useSkAPI = () => {
         id: undefined,
         datauri: photo.dataUrl!,
       };
+      set("lastDatauri", photo.dataUrl);
       console.log(photo.dataUrl);
       const b64list = photo.dataUrl!.split(",");
-      const b64 = b64list[b64list.length -1];
+      const b64 = b64list[b64list.length - 1];
       console.log("b64, ", b64);
       const res = await fetch("https://skinscan.withskyfallen.com/upload", {
         method: "POST",
