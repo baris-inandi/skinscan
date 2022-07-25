@@ -44,7 +44,7 @@ export const ResultOverlay: React.FC<Props> = (props) => {
     [props, isLooping]
   );
 
-  return <div>{props.id}</div>;
+  return <div></div>;
 };
 
 export default ResultOverlay;
