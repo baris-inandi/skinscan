@@ -127,10 +127,11 @@ well for the client-side to use in order to increase the accuracy of the result.
 In practice, the user will be able to take a photo of their sample, answer a few questions if
 needed, and see their results. In addition, they will be able to gain insight through the
 condition’s dedicated page with info such as symptoms, complications, and treatments.
-More Resources
-• Project Drive link: <https://drive.google.com/drive/folders/1bj3r-M8NyBCrgWyyBnRNpZGI_wCkUgCo>
-• GitHub repository: <https://github.com/baris-inandi/skinscan>
-• Figma design link: <https://www.figma.com/file/wOYpIffc3C8dTDzUTwUhiY/SkinScan>
+
+## More Resources
+- Project Drive link: <https://drive.google.com/drive/folders/1bj3r-M8NyBCrgWyyBnRNpZGI_wCkUgCo>
+- GitHub repository: <https://github.com/baris-inandi/skinscan>
+- Figma design link: <https://www.figma.com/file/wOYpIffc3C8dTDzUTwUhiY/SkinScan>
 
 ## UI/UX Design
 
