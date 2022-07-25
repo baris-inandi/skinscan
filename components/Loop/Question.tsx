@@ -7,7 +7,7 @@ const Question: React.FC = () => {
     setVisible(false);
   };
   return (
-    <div className={visible ? "" : "hidden"}>
+    <div className={visible ? "z-50" : "hidden"}>
       <Greeter
         order={1}
         title="Does it itch?"
