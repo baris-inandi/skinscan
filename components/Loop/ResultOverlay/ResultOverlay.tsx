@@ -14,6 +14,10 @@ export const ResultOverlay: React.FC<Props> = (props) => {
 
   useEffect(
     function () {
+      const f = async () => {
+        await createStore("__sk_store");
+      };
+      f();
       if (props.id == "undefined" || isLooping) {
         return;
       }
@@ -26,17 +30,16 @@ export const ResultOverlay: React.FC<Props> = (props) => {
           )}`
         );
         let rspTxt = await res.text();
-        /*if (rspTxt === "Internal Server Error") {
+        if (rspTxt === "Internal Server Error") {
         logout();
       } else {
         const status = String(JSON.parse(rspTxt).status);
         if(status === "completed"){
           setIsComplete(true)
           clearInterval(interval)
-          console.log("processed")
         }
-      }*/
-      }, 3000);
+      }
+      }, 1000);
     },
     [props, isLooping]
   );
