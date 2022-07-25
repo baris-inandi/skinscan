@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Router from "next/router";
-import ResultOverlay from "./ResultOverlay/ResultOverlay";
+import ResultOverlay from "./ResultOverlay/Resolver/Resolver";
 import BottomInformCard from "./BottomInformCard/BottomInformCard";
 import { createStore, get } from "../../lib/store/store";
 
