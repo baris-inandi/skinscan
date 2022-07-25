@@ -12,6 +12,8 @@ export const ResultOverlay: React.FC<Props> = (props) => {
   const [isCompleted, setIsComplete] = useState(false);
   const [isLooping, setIsLooping] = useState(false);
   const [wikiInfo, setWikiInfo] = useState({});
+  const [rawDiseaseData, setRawDiseaseData] = useState();
+  const [sortedDiseaseData, setSortedDiseaseData] = useState();
 
   useEffect(
     function () {
@@ -48,6 +50,8 @@ export const ResultOverlay: React.FC<Props> = (props) => {
             let response = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${probs[0][0]}`)
             let wiki = (await response.json())
             setWikiInfo(wiki)
+            setSortedDiseaseData(probs)
+            setRawDiseaseData(resp.data)
             setIsComplete(true)
           }
         }
@@ -56,7 +60,7 @@ export const ResultOverlay: React.FC<Props> = (props) => {
     [props, isLooping]
   );
 
-  return <div></div>;
+  return <div>{props.id}</div>;
 };
 
 export default ResultOverlay;
