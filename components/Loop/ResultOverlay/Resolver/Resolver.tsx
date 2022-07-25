@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { get, createStore } from "../../../../lib/store/store";
 import { logout } from "../../../../lib/auth";
-import Analysis from from"./Analysis/Analysis";
+import Analysis from "./Analysis/Analysis";
 import ISkAnalysis from "../Interface/ISkAnalysis";
+import Router from "next/router";
+import BottomInformCard from "../../BottomInformCard/BottomInformCard";
 
 interface Props {
   id: string;
@@ -58,7 +60,21 @@ export const ResultOverlay: React.FC<Props> = (props) => {
     [props, isLooping]
   );
 
-  return <Analysis analysis={analysis} />;
+  return (
+    <>
+      <Analysis analysis={analysis} />
+      {!analysis && (
+        <BottomInformCard
+          title="Loading..."
+          content="We're analyzing your image. This might take a few minutes"
+          btnText="Cancel"
+          onClick={() => {
+            Router.replace("/");
+          }}
+        />
+      )}
+    </>
+  );
 };
 
 export default ResultOverlay;

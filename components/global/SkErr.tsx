@@ -10,15 +10,13 @@ interface Props {
 const SkErr: React.FC<Props> = (props) => {
   return (
     <div
-      className={`w-full bg-sk-${props.level}-bg text-sk-${props.level}-fg flex items-center rounded-xl p-4 gap-4`}
+      className={`w-full bg-sk-${props.level}-bg text-sk-${props.level}-fg flex items-center rounded-xl p-6 gap-4`}
     >
       <IonIcon
         icon={props.level == "warn" ? warningOutline : alertCircleOutline}
         size="large"
       />
-      <p className="text-left w-full text-base leading-tight">
-        {props.content}
-      </p>
+      <p className="text-left w-full text-sm leading-tight">{props.content}</p>
     </div>
   );
 };
