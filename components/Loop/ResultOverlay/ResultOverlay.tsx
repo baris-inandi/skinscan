@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { get } from "../../../lib/store/store";
+import { get, createStore } from "../../../lib/store/store";
 import { logout } from "../../../lib/auth";
 
 interface Props {
@@ -19,10 +19,11 @@ export const ResultOverlay: React.FC<Props> = (props) => {
       }
       setIsLooping(true);
       let interval = setInterval(async function () {
+        await createStore("__sk_store");
         const res = await fetch(
-          `https://skinscan.withskyfallen.com/status/${
-            props.id
-          }?token=${await get("currentUserToken")}`
+          `https://skinscan.withskyfallen.com/status/${props.id}?token=${String(
+            await get("currentUserToken")
+          )}`
         );
         let rspTxt = await res.text();
         /*if (rspTxt === "Internal Server Error") {
@@ -35,7 +36,7 @@ export const ResultOverlay: React.FC<Props> = (props) => {
           console.log("processed")
         }
       }*/
-      }, 5000);
+      }, 3000);
     },
     [props, isLooping]
   );
