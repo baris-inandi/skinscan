@@ -15,33 +15,34 @@ interface Props {
 const Analysis: React.FC<Props> = (props) => {
   const lowConfidenceThreshold = 60;
 
-  const getAccuracy = (rankOfCondition: number): number => {
+  const getAccuracy = (rankOfCondition: number): string => {
     return (
-      parseFloat(
-        parseFloat(props.analysis!.probs[rankOfCondition][1]).toFixed(2)
-      ) * 100
-    );
+      parseFloat(parseFloat(probs![rankOfCondition][1]).toFixed(2)) * 100
+    ).toFixed(0);
   };
-
-  const primaryAccuracy = props.analysis ? getAccuracy(0) : 0;
-  const secondaryAccuracy = props.analysis ? getAccuracy(1) : 0;
-
-  const [infoPagesDisplayed, setInfoPagesDisplayed] = useState(false);
 
   const [insightsStyles, setInsightsStyles] = useState<any>({
     transform: "translateY(100%)",
   });
 
   const [analysisStyles, setAnalysisStyles] = useState<any>({
-    transform: "translateY(200%)",
+    transform: "translateY(100%)",
   });
 
   const [probs, setProbs] = useState<any[] | undefined>(undefined);
 
+  const primaryAccuracy = probs ? getAccuracy(0) : 0;
+  const secondaryAccuracy = probs ? getAccuracy(1) : 0;
+
   useEffect(() => {
     let interval = setInterval(async () => {
       if (props.analysis) {
-        setProbs(props.analysis!.probs);
+        setProbs(props.analysis!.probs.slice(0, 2));
+        if (props.analysis.probs[0][1] >= 0.85) {
+          setAnalysisStyles({
+            transform: "translateY(0)",
+          });
+        }
         clearInterval(interval);
       }
     }, 10);
@@ -52,17 +53,14 @@ const Analysis: React.FC<Props> = (props) => {
     : false;
   const w = props.analysis?.wiki;
 
-  console.log(infoPagesDisplayed);
-
   return (
     <div className="bg-black">
-      {props.analysis && (
+      {props.analysis && props.analysis.probs[0][1] <= 0.85 && (
         <Question
           setProbs={(newProbs: any[]) => {
             setProbs(newProbs);
           }}
           setDismissed={(val: boolean) => {
-            setInfoPagesDisplayed(true);
             setAnalysisStyles({
               transform: "translateY(0)",
             });
@@ -84,7 +82,7 @@ const Analysis: React.FC<Props> = (props) => {
                     <div>
                       <h2 className="capitalize text-2xl">{probs[0][0]}</h2>
                       <h3 className="flex items-center">
-                        with {primaryAccuracy}% accuracy
+                        with {primaryAccuracy}% confidence
                       </h3>
                     </div>
                     {lowConfidence && (
@@ -116,7 +114,7 @@ const Analysis: React.FC<Props> = (props) => {
                     {lowConfidence && (
                       <SkErr
                         level="warn"
-                        content="The percentage of accuracy of this result is fairly low, note that there is a high chance this result is inaccurate."
+                        content="The percentage of confidence of this result is fairly low, note that there is a high chance this result is inaccurate."
                       />
                     )}
                   </div>
@@ -132,7 +130,7 @@ const Analysis: React.FC<Props> = (props) => {
                   <div className="flex justify-between items-center pb-8">
                     <h2 className="capitalize text-xl">{probs[1][0]}</h2>
                     <h3 className="text-sm">
-                      with {secondaryAccuracy}% accuracy
+                      with {secondaryAccuracy}% confidence
                     </h3>
                   </div>
                   <div className="pb-8">
@@ -147,7 +145,7 @@ const Analysis: React.FC<Props> = (props) => {
                 className="transition duration-500 z-30 h-screen w-screen bg-transparent"
                 style={insightsStyles}
               >
-                <div className="overflow-y-auto pb-28 px-10 py-20 fixed h-screen mt-16 rounded-t-3xl w-screen bg-sk-bg">
+                <div className="shadow-xl overflow-y-auto pb-28 px-10 py-20 fixed h-screen mt-16 rounded-t-3xl w-screen bg-sk-bg">
                   <div className="flex flex-col gap-8">
                     <div className="pb-2">
                       <h1 className="font-sk pb-2 text-3xl font-medium">

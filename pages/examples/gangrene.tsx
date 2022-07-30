@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 import React from "react";
 
-const App = dynamic(() => import("../components/global/misc/Example"), {
+const App = dynamic(() => import("../../components/global/misc/ExampleGangrene"), {
   ssr: false,
 });
 

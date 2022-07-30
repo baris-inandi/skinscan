@@ -4,7 +4,7 @@ import Analysis from "../../Loop/ResultOverlay/Resolver/Analysis/Analysis";
 const Example = () => {
   const a = {
     probs: [
-      ["eczema", 0.45934],
+      ["eczema", 0.6934],
       ["gangrene", 0.3312],
       ["healthy", 0.1533],
     ],
