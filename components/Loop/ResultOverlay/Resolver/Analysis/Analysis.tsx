@@ -6,7 +6,7 @@ import Question from "../../../Question";
 import Image from "next/image";
 import Router from "next/router";
 import { IonIcon } from "@ionic/react";
-import { alertCircleOutline, warningOutline } from "ionicons/icons";
+import { alertCircleOutline } from "ionicons/icons";
 
 interface Props {
   analysis: ISkAnalysis | undefined;
@@ -46,7 +46,7 @@ const Analysis: React.FC<Props> = (props) => {
             className="transition duration-500 z-20 h-screen w-screen bg-transparent"
           >
             <Question />
-            <div className="overflow-y-auto px-10 py-20 font-sk absolute z-20 h-screen mt-10 rounded-t-3xl w-screen bg-sk-bg">
+            <div className="overflow-y-auto px-10 py-20 font-sk fixed z-20 h-screen mt-10 rounded-t-3xl w-screen bg-sk-bg">
               <h1 className="pb-8 text-3xl font-medium">Your Results</h1>
               <div className="pb-4 flex items-center justify-between">
                 <div>
@@ -118,7 +118,7 @@ const Analysis: React.FC<Props> = (props) => {
             className="transition duration-500 z-30 h-screen w-screen bg-transparent"
             style={insight}
           >
-            <div className="overflow-y-auto px-10 py-20 absolute h-screen mt-10 rounded-t-3xl w-screen bg-sk-bg">
+            <div className="overflow-y-auto px-10 py-20 fixed h-screen mt-10 rounded-t-3xl w-screen bg-sk-bg">
               <div className="flex flex-col gap-8">
                 <div className="pb-2">
                   <h1 className="font-sk pb-2 text-3xl font-medium">
