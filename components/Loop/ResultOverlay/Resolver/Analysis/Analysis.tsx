@@ -119,21 +119,25 @@ const Analysis: React.FC<Props> = (props) => {
                     )}
                   </div>
 
-                  <div className="flex items-center pt-12 pb-8">
-                    <div className="border-t border-sk-sub w-full" />
-                    <div className="flex-shrink-0 px-3 text-sk-sub text-center text-xs">
-                      Another possibility:
+                  {props.analysis.probs[1][1] > 0.1 && (
+                    <div>
+                      <div className="flex items-center pt-12 pb-8">
+                        <div className="border-t border-sk-sub w-full" />
+                        <div className="flex-shrink-0 px-3 text-sk-sub text-center text-xs">
+                          Another possibility:
+                        </div>
+                        <div className="border-t border-sk-sub w-full" />
+                      </div>
+                      <div className="flex justify-between items-center pb-8">
+                        <h2 className="capitalize text-xl">{probs[1][0]}</h2>
+                        <h3 className="text-sm">
+                          with {secondaryAccuracy}% confidence
+                        </h3>
+                      </div>
                     </div>
-                    <div className="border-t border-sk-sub w-full" />
-                  </div>
+                  )}
 
-                  <div className="flex justify-between items-center pb-8">
-                    <h2 className="capitalize text-xl">{probs[1][0]}</h2>
-                    <h3 className="text-sm">
-                      with {secondaryAccuracy}% confidence
-                    </h3>
-                  </div>
-                  <div className="pb-8">
+                  <div className="pb-10 mt-6">
                     <SkButton onClick={() => Router.replace("/")} fill outlined>
                       Done
                     </SkButton>
