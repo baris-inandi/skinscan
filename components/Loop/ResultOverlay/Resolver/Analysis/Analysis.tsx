@@ -15,6 +15,17 @@ interface Props {
 const Analysis: React.FC<Props> = (props) => {
   const lowConfidenceThreshold = 60;
 
+  const getAccuracy = (rankOfCondition: number): number => {
+    return (
+      parseFloat(
+        parseFloat(props.analysis!.probs[rankOfCondition][1]).toFixed(2)
+      ) * 100
+    );
+  };
+
+  const primaryAccuracy = props.analysis ? getAccuracy(0) : 0;
+  const secondaryAccuracy = props.analysis ? getAccuracy(1) : 0;
+
   const [insight, setInsight] = useState<any>({
     transform: "translateY(100%)",
   });
@@ -43,9 +54,7 @@ const Analysis: React.FC<Props> = (props) => {
                     {props.analysis.probs[0][0]}
                   </h2>
                   <h3 className="flex items-center">
-                    with{" "}
-                    {parseFloat(props.analysis.probs[0][1]).toFixed(2) * 100}%
-                    accuracy
+                    with {primaryAccuracy}% accuracy
                   </h3>
                 </div>
                 {lowConfidence && (
@@ -96,14 +105,13 @@ const Analysis: React.FC<Props> = (props) => {
                 <h2 className="capitalize text-xl">
                   {props.analysis.probs[1][0]}
                 </h2>
-                <h3 className="text-sm">
-                  with {parseFloat(props.analysis.probs[1][1]).toFixed(2) * 100}
-                  % accuracy
-                </h3>
+                <h3 className="text-sm">with {secondaryAccuracy}% accuracy</h3>
               </div>
-              <SkButton onClick={() => Router.replace("/")} fill outlined>
-                Done
-              </SkButton>
+              <div className="pb-8">
+                <SkButton onClick={() => Router.replace("/")} fill outlined>
+                  Done
+                </SkButton>
+              </div>
             </div>
           </div>
           <div
@@ -128,16 +136,18 @@ const Analysis: React.FC<Props> = (props) => {
                   />
                 </div>
                 <p dangerouslySetInnerHTML={{ __html: w.extract_html }} />
-                <SkButton
-                  fill
-                  outlined
-                  onClick={() => {
-                    setInsight({ transform: "translateY(100%)" });
-                    setAnalysis({ display: "translateY(0%)" });
-                  }}
-                >
-                  Close
-                </SkButton>
+                <div className="pb-8">
+                  <SkButton
+                    fill
+                    outlined
+                    onClick={() => {
+                      setInsight({ transform: "translateY(100%)" });
+                      setAnalysis({ display: "translateY(0%)" });
+                    }}
+                  >
+                    Close
+                  </SkButton>
+                </div>
               </div>
             </div>
           </div>
