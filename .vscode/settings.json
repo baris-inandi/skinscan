@@ -3,6 +3,7 @@
     "imread",
     "imshow",
     "imwrite",
+    "pageid",
     "probs",
     "scanid",
     "signup",

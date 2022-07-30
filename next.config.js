@@ -1,6 +1,6 @@
 module.exports = {
   images: {
-    domains: ["images.unsplash.com"],
+    domains: ["upload.wikimedia.org"],
   },
   swcMinify: true,
 };

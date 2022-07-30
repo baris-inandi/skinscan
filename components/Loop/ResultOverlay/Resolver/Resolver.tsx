@@ -11,19 +11,54 @@ interface Props {
 }
 
 export const ResultOverlay: React.FC<Props> = (props) => {
+  interface ICardProps {
+    title: string;
+    content: string;
+    btnText: string;
+    onClick: () => void;
+  }
+
+  const maxRequests = 12;
+  const requestIntervalSeconds = 5;
+
+  const [cardProps, setCardProps] = useState<ICardProps>({
+    title: "Loading...",
+    content: "We're analyzing your image. This might take up to a few minutes",
+    btnText: "Cancel",
+    onClick: () => {
+      Router.replace("/");
+    },
+  });
+
+  const [isError, setIsError] = useState(false);
   const [isLooping, setIsLooping] = useState(false);
   const [analysis, setAnalysis] = useState<ISkAnalysis | undefined>(undefined);
-  useEffect(
-    function () {
-      const f = async () => {
-        await createStore("__sk_store");
-      };
-      f();
+  useEffect(() => {
+    const f = async () => {
+      await createStore("__sk_store");
       if (props.id == "undefined" || isLooping) {
         return;
       }
       setIsLooping(true);
-      let interval = setInterval(async function () {
+      let n = 0;
+      let interval = setInterval(async () => {
+        n++;
+        console.log("request number", n);
+        if (n > maxRequests) {
+          setIsError(true);
+          clearInterval(interval);
+          console.log("cleared interval, max requests reached");
+          setCardProps({
+            title: "Sorry",
+            content:
+              "It's taking too long for our servers to respond. Please try again later.",
+            btnText: "OK",
+            onClick: () => {
+              Router.replace("/");
+            },
+          });
+          return;
+        }
         await createStore("__sk_store");
         const res = await fetch(
           `https://skinscan.withskyfallen.com/status/${props.id}?token=${String(
@@ -55,24 +90,15 @@ export const ResultOverlay: React.FC<Props> = (props) => {
             setAnalysis(skAnalysis);
           }
         }
-      }, 3000);
-    },
-    [props, isLooping]
-  );
+      }, requestIntervalSeconds * 1000);
+    };
+    f();
+  }, [props, isLooping]);
 
   return (
     <>
       <Analysis analysis={analysis} />
-      {!analysis && (
-        <BottomInformCard
-          title="Loading..."
-          content="We're analyzing your image. This might take a few minutes"
-          btnText="Cancel"
-          onClick={() => {
-            Router.replace("/");
-          }}
-        />
-      )}
+      {!analysis && <BottomInformCard err={isError} {...cardProps} />}
     </>
   );
 };

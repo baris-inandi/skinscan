@@ -11,7 +11,7 @@ const InitialOverlay: React.FC = () => {
   return (
     <div>
       <NotchLogo />
-      <p className="w-screen fixed bottom-0 pointer-events-none text-center text-sk-sub text-xs pb-2 safe-area-bottom">
+      <p className="w-screen fixed bottom-4 pointer-events-none text-center text-sk-sub text-xs safe-area-bottom">
         Made with love in Turkey by team line0
       </p>
       <div
