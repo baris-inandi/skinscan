@@ -11,7 +11,7 @@ interface Props {
 
 const Question: React.FC<Props> = (props) => {
   const secondaryFollowUpThreshold = 0.33; // the probability that condition #2 must have in order to get its questions to be shown.
-  const noQuestionThreshold = 0.85; // no questions will be asked past this point
+  const noQuestionThreshold = 0.90; // no questions will be asked past this point
 
   const [currentQuestionIndex, setCurrentQuestionIndex] = React.useState(0);
   const [selfStyle, setSelfStyle] = React.useState<any>({
