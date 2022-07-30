@@ -21,14 +21,9 @@ const Loop: React.FC = () => {
     <div>
       <Resolver id={String(Router.query.id)} />
       <div
-        className="fixed top-0 left-0 w-screen h-screen z-20"
-        style={{
-          background: "rgba(14,12,10,0.5)",
-        }}
-      />
-      <div
         style={{
           backgroundImage: `url("${datauri}")`,
+          filter: "brightness(75%)",
         }}
         className="w-screen h-screen bg-no-repeat bg-cover"
       />

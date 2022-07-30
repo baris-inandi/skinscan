@@ -18,8 +18,8 @@ export const ResultOverlay: React.FC<Props> = (props) => {
     onClick: () => void;
   }
 
-  const maxRequests = 24;
-  const requestIntervalSeconds = 5;
+  const maxRequests = 50;
+  const requestIntervalSeconds = 3;
 
   const [cardProps, setCardProps] = useState<ICardProps>({
     title: "Loading...",
