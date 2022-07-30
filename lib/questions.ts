@@ -1,7 +1,7 @@
 export interface IQuestionInner {text: string, probImpact: number}
 export interface IQuestion { favors: string; question: IQuestionInner }
 export interface IQuestions { [key: string]: IQuestion[] }
-// test
+
 let questions: IQuestions = {}
 
 const addCondition = (obj: IQuestions, name: string, questions: IQuestionInner[]) => {
