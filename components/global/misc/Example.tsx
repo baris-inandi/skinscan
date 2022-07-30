@@ -5,7 +5,7 @@ const Example = () => {
   const a = {
     probs: [
       ["eczema", 0.45934],
-      ["gangrene", 0.2312],
+      ["gangrene", 0.3312],
       ["healthy", 0.1533],
     ],
     wiki: {
