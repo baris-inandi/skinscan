@@ -1,8 +1,0 @@
-{
-	"appId": "com.skinscan.app",
-	"appName": "skinscan",
-	"bundledWebRuntime": false,
-	"npmClient": "pnpm",
-	"webDir": "out",
-	"cordova": {}
-}
