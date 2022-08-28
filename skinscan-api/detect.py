@@ -31,7 +31,7 @@ while True:
             frame = cv2.imread("./input/"+filename)
             frame = cv2.resize(frame, (224,224))
             frame = frame.reshape(1,224,224,3)
-            label_names = ["healthy","eczema","gangrene","ichthyosis","vitiligo"]
+            label_names = ["healthy","eczema","gangrene"]
             pred = model.predict(frame)
             disease_code = np.argmax(pred[0])
             disease_label = label_names[disease_code]
@@ -40,8 +40,6 @@ while True:
                 "healthy": float(pred[0][0]),
                 "eczema": float(pred[0][1]),
                 "gangrene": float(pred[0][2]),
-                "ichthyosis": float(pred[0][3]),
-                "vitiligo": float(pred[0][4]),
             }
             jsonprob = json.dumps(probdict)
             cursor.execute('UPDATE scans SET file="removed" WHERE id={id}'.format(id=res[0]))
